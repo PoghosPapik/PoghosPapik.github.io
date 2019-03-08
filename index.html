@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PAPIK</title>
+
+        <link rel="stylesheet" href="./w3.css">
+        <script src="./jquery.js" charset="utf-8"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style media="screen">
+            html, body {
+                background: #e6e9f6;
+            }
+
+            .all input {
+                width: 90%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="all">
+            <center>
+                <h2>CALCULATOR</h2>
+
+                <div class="inputs">
+                    <input type="number" name="" value="" id="0" style="" placeholder="Ներմուծել թիվ"><br><br>
+                    <input type="number" name="" value="" id="1" style="" placeholder="Ներմուծել թիվ"><br><br>
+                </div>
+
+                <button type="button" name="button" onclick="sumUp()">Գումարել</button>|<button type="button" name="button" onclick="erase()">Ջնջել</button>
+            </center>
+        </div>
+
+        <script type="text/javascript">
+            var id = 1;
+
+            // function add() {
+            //     $('.inputs').append("<input type='number' name='' value='' id='" + id + "' style='' placeholder='Ներմուծել թիվ'><br><br>");
+            //     id++;
+            // }
+
+            var requestAnimFrame = window.requestAnimationFrame ||
+                                   window.mozRequestAnimationFrame ||
+                                   window.msRequestAnimationFrame ||
+                                   window.webkitRequestAnimationFrame ||
+                                   window.oRequestAnimationFrame;
+
+            var loop = function() {
+                if (document.getElementById(id).value != "") {
+                    id++;
+                    $('.inputs').append("<input type='number' name='' value='' id='" + id + "' style='' placeholder='Ներմուծել թիվ'><br><br>");
+                }
+
+                window.requestAnimFrame(loop);
+            }
+
+            loop();
+
+            function sumUp() {
+                var sum = 0;
+                for (var i = 0; i < id; i++) {
+                    if (document.getElementById(i).value != "") {
+                        console.log(document.getElementById(i).value);
+                        sum += parseInt(document.getElementById(i).value);
+                    }
+                }
+                alert(sum);
+            }
+
+            function erase() {
+                for (var i = 0; i < id; i++) {
+                    if (document.getElementById(i).value != "") {
+                        document.getElementById(i).value = "";
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
